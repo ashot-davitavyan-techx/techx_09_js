@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 	if (savedNotes) {
 		noteInput.value = savedNotes;
+	} else {
+		noteInput.value = "";
 	}
 	if (!cookieConsentValue || cookieConsentValue != "true") {
 		setTimeout(() => {
@@ -37,7 +39,6 @@ const noteButton = document.getElementById("note-save-button");
 const noteInput = document.getElementById("notes");
 
 noteButton.addEventListener("click", function(){
-	console.log(noteInput.value);
 	sessionStorage.setItem('userNote', noteInput.value);
 });
 
