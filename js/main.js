@@ -2,26 +2,20 @@ const form = document.getElementById("form");
 const cookieConsent = document.getElementById("cookie-consent");
 const mainContent = document.getElementById("main");
 
-document.addEventListener("DOMContentLoaded", function() {
-	const savedFormData = localStorage.getItem('userProfile');
-	const savedNotes = sessionStorage.getItem('userNote');
-	const cookieConsentValue = getCookieConsent();
+const savedFormData = localStorage.getItem('userProfile');
+const savedNotes = sessionStorage.getItem('userNote');
+const cookieConsentValue = getCookieConsent();
 
-	if (savedFormData) {
-		console.log("Loaded profile: ", JSON.parse(savedFormData));
-	}
-	if (savedNotes) {
-		noteInput.value = savedNotes;
-	} else {
-		noteInput.value = "";
-	}
-	if (!cookieConsentValue || cookieConsentValue != "true") {
-		setTimeout(() => {
-			cookieConsent.style.display = "flex";
-			mainContent.classList.add("blurred");
-		}, 1000)
-	}
-});
+if (savedFormData) {
+	console.log("Loaded profile: ", JSON.parse(savedFormData));
+}
+
+if (!cookieConsentValue || cookieConsentValue != "true") {
+	setTimeout(() => {
+		cookieConsent.style.display = "flex";
+		mainContent.classList.add("blurred");
+	}, 1000)
+}
 
 //-----------------------Task1---------------------//
 
@@ -33,10 +27,15 @@ form.addEventListener('submit', function(event){
 	form.reset();
 });
 
-
 //----------------------Task2------------------------//
 const noteButton = document.getElementById("note-save-button");
 const noteInput = document.getElementById("notes");
+
+if (savedNotes) {
+	noteInput.value = savedNotes;
+} else {
+	noteInput.value = "";
+}
 
 noteButton.addEventListener("click", function(){
 	sessionStorage.setItem('userNote', noteInput.value);
@@ -53,7 +52,7 @@ function getCookieConsent() {
 	?.split("=")[1]);
 }
 
-function hadnleCookieConsent(choice){
+function handleCookieConsent(choice){
 	cookieConsent.style.display = "none";
 	mainContent.classList.remove("blurred");
 	let date = new Date(Date.now() + 86400e3*7);
@@ -64,11 +63,11 @@ function hadnleCookieConsent(choice){
 }
 
 cookieAcceptButton.addEventListener("click", function(){
-	hadnleCookieConsent(true);
+	handleCookieConsent(true);
 });
 
 cookieDenyButton.addEventListener("click", function(){
-	hadnleCookieConsent(false);
+	handleCookieConsent(false);
 });
 
 //-------------------Task4--------------------------//
@@ -106,7 +105,7 @@ getJokeButton.addEventListener("click", async function(){
 		});
 		const data = await response.json();
 		if (!response.ok)
-			throw new error("");
+			throw new Error("Fetch failed");
 		jokeDisplay.innerText = data.joke;
 	} catch (error) {
 		jokeDisplay.innerText = "Failed to fetch joke";
