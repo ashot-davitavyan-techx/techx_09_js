@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="cookie-consent-box" id="cookie-consent">
+			<div class="cookie-consent-message">
+				<h2 class="custom-h2">Cookies</h2>
+				<p>Do you accept our cookies?</p>
+			</div>
+			<div class="buttons">
+				<button class="styled-button" id="cookie-button-accept">Accept</button>
+				<button class="styled-button" id="cookie-button-deny">Deny</button>
+			</div>
+		</div>
+		<main class="main" id="main">
+			<section class="section">
+				<h2 class="custom-h2">Task1</h2>
+				<form id="form">
+					<div class="task-container">
+						<div
+							class="user-info"
+							id="user-info"
+						>
+							<input
+								class="styled-input"
+								type="text"
+								name="full-name"
+								id="full-name"
+								placeholder="Full Name"
+								required
+							/>
+							<input
+								class="styled-input"
+								type="email"
+								name="email"
+								id="email"
+								placeholder="Email"
+								required
+							/>
+						</div>
+						<div class="submit-box">
+							<button
+								type="submit"
+								class="styled-button"
+							>
+								Submit
+							</button>
+						</div>
+					</div>
+				</form>
+			</section>
+			<section class="section">
+				<h2 class="custom-h2">Task2</h2>
+				<div class="task-container">
+					<textarea class="styled-input custom-textarea" name="notes" id="notes" placeholder="Enter some stuff here..."></textarea>
+					<button class="styled-button" id="note-save-button">Save Note</button>
+				</div>
+			</section>
+			<section class="section">
+				<h2 class="custom-h2">Task4</h2>
+				<div class="task-container">
+					<button class="styled-button" id="clear-storage-button">Clear Storage and Cookies</button>
+				</div>
+			</section>
+			<section class="section">
+				<h2 class="custom-h2">Task5</h2>
+				<div class="task-container">
+					<button class="styled-button" id="get-joke-button">Get Joke</button>
+					<p id="joke-display"></p>
+				</div>
+			</section>
+			<section class="section">
+				<h2 class="custom-h2">Task6</h2>
+				<div class="task-container">
+					<button class="styled-button" id="start-countdown-button">Start Coundown</button>
+					<h3 id="countdown-display"></h3>
+				</div>
+			</section>
+			<section class="section">
+				<h2 class="custom-h2">Task7</h2>
+				<div class="task-container">
+					<div class="buttons">
+						<button class="styled-button" id="start-ticking-button">Start Ticking</button>
+						<button class="styled-button" id="clear-ticks-button">Clear</button>
+						<button class="styled-button" id="stop-ticking-button">Stop Ticking</button>
+					</div>
+					<h3 id="tick-display"></h3>
+				</div>
+			</section>
+		</main>
+	</body>
+	<script type="module" src="js/main.js"></script>
+</html>
